@@ -1,5 +1,5 @@
-!lab-07-cowsay-http-server ![JVS](assets/cow.gif)
-### Simple server handling requests to a cowsay service that repeats your input with a little flair
+![JVS](assets/cow.gif)
+## Simple server handling requests to a cowsay service that repeats your input with a little flair
 
 Clone down then run in terminal:
 ```
