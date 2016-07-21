@@ -43,7 +43,7 @@ let server = http.createServer((req, res) => {
       }));
       res.end();
     } else {
-      res.writeHead(200, {'Content-Type': 'text/plain'});
+      res.writeHead(400, {'Content-Type': 'text/plain'});
       res.write(cowsay.say({
         text: 'bad request\ntry: localhost:3000/cowsay?text=howdy'
       }));
