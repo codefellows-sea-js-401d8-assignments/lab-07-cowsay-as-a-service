@@ -4,10 +4,10 @@
     npm run
 
     // Run the tests
-    npm test
+    gulp test
 
     // Run the linter
-    npm run lint
+    gulp lint
 
     // Get coverage info
     npm run cover
