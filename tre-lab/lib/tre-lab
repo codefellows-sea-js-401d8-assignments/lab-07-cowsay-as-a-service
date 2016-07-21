@@ -1,0 +1,11 @@
+'use strict';
+
+const http = require('http');
+const cowsay = require('cowsay');
+
+http.creatServer((req res) => {
+  res.writeHead(200,  {
+    "Content-Type": 'application/json'
+  });
+  
+}).listen(3000, () => console.log('It\'s lit!'));
