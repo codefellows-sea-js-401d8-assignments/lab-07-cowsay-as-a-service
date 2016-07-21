@@ -2,7 +2,7 @@
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const cowsay = require('cowsay')
+const cowsay = require('cowsay');
 
 chai.use(chaiHttp);
 
@@ -17,10 +17,10 @@ describe('HTTP Server ', () => {
       .end((err, res) => {
         expect(err).to.eql(null);
         expect(res).to.have.status(200);
-        expect(res.text).to.eql('API Endpoints:\n/api/cowsay')
+        expect(res.text).to.eql('API Endpoints:\n/api/cowsay');
         done();
-      })
-  })
+      });
+  });
 
   describe('HTTP endpoint /api/cowsay', () => {
     it('should return a cow', (done) => {
@@ -30,8 +30,8 @@ describe('HTTP Server ', () => {
           expect(res).to.have.status(400);
           expect(res.text).to.eql(cowsay.say({text: 'bad request\ntry localhost:3000/api/cowsay?text=howdy' }));
           done();
-        })
-    })
+        });
+    });
 
     describe('HTTP post to endpoint /api/cowsay', () => {
       it('should return a cow with post request', (done) => {
@@ -40,10 +40,10 @@ describe('HTTP Server ', () => {
           .end((err, res) => {
             expect(err).to.eql(null);
             expect(res).to.have.status(200);
-            expect(res.text).to.eql(cowsay.say({text: 'hello'}))
+            expect(res.text).to.eql(cowsay.say({text: 'hello'}));
             done();
-          })
-      })
-    })
-  })
-})
+          });
+      });
+    });
+  });
+});
