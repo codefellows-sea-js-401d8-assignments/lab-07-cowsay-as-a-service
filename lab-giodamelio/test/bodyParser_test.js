@@ -29,7 +29,7 @@ describe('bodyParser()', () => {
 
     return bodyParser(fakeRequest)
       .catch((err) => {
-        expect(err.message).to.equal('Unexpected token I in JSON at position 0');
+        expect(err.message).to.have.string('Unexpected token I');
       });
   });
 });
