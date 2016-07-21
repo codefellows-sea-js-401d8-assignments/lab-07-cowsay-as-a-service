@@ -12,9 +12,20 @@ let server = http.createServer((req, res) => {
     res.end();
   } else if (urlObj.pathname === '/api/cowsay' && req.method === 'GET') {
     if (urlObj.query.text) {
+      if (urlObj.query.cow) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.write(cowsay.say({
+          text: urlObj.query.text,
+          f: urlObj.query.cow
+        }));
+        res.end();
+        return;
+      }
+
       res.writeHead(200, {'Content-Type': 'text/plain'});
       res.write(cowsay.say({
-        text: urlObj.query.text
+        text: urlObj.query.text,
+        f: 'default'
       }))
       res.end();
     } else {
