@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      sendCowsay(res, 200, parsedUrl.query.text);
+      sendCowsay(res, 200, parsedUrl.query.text, parsedUrl.query.type);
     } else if (req.method === 'POST') {
       let body = '';
 
@@ -35,7 +35,7 @@ const server = http.createServer((req, res) => {
             return;
           }
 
-          sendCowsay(res, 200, options.text);
+          sendCowsay(res, 200, options.text, options.type);
         } catch (e) {
           sendCowsay(res, 400, 'Invalid request');
         }
