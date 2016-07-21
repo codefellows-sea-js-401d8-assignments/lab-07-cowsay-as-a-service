@@ -16,10 +16,11 @@ describe('Http Server testing', () => {
 
   it('server should respond to GET with status code 200 if correct endpoint', (done) => {
     request('localhost:3000')
-    .get('/api/cowsay?text=hello-world')
+    .get('/api/cowsay?text=hello-world&type=vader')
     .end(function(err, res) {
       expect(err).to.eql(null);
       expect(res).to.have.status(200, 'this should be the code');
+      console.log(res.text);
       done();
     });
   });

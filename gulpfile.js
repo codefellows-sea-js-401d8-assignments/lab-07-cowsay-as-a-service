@@ -60,4 +60,4 @@ gulp.task('watch', () => {
   gulp.watch([scripts, testFiles, binFiles], ['lint', 'test']);
 });
 
-gulp.task('default', ['watch', 'lint', 'test']);
+gulp.task('default', ['lint', 'test']);
