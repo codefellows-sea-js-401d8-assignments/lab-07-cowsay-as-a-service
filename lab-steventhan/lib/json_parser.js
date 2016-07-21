@@ -2,19 +2,16 @@
 
 let jsonPromise = (req) => {
   return new Promise((resolve, reject) => {
-    let stringified = '';
+    let jsonString = '';
     req.on('data', (data) => {
-      stringified += data.toString();
+      jsonString += data.toString();
     });
     req.on('end', () => {
       try {
-        let parsed = JSON.parse(stringified);
+        let parsed = JSON.parse(jsonString);
         resolve(parsed);
       } catch (e) {
-        reject({
-          error: e,
-          input: stringified
-        });
+        reject(e);
       }
     });
   });

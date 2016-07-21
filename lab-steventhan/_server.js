@@ -14,7 +14,7 @@ let server = http.createServer((req, res) => {
       });
       res.write('API Endpoints: /api/cowsay');
       res.end();
-    } else if (req.url === '/cowsay' + parsed.search) {
+    } else if (req.url === '/api/cowsay' + parsed.search) {
       if (parsed.query.text) {
         res.writeHead(200, {
           'Content-Type': 'text/plain'
@@ -31,23 +31,22 @@ let server = http.createServer((req, res) => {
     }
   } else if (req.method === 'POST') {
 
-    jsonPromise(req)
+    return jsonPromise(req)
       .then((parsedJSON) => {
         res.writeHead(200, {
-          'Content-Type': 'text/plain'
+          'Content-Type': 'application/json'
         });
-        res.write(parsedJSON);
-        console.log('hit then block');
+        if (parsedJSON.text) res.write(`{"cowsay": ${cowsay.say({text: parsedJSON.text})}}`);
+        else res.write(`{"cowsay": ${cowsay.say({text: 'bad request\ntry: localhost:3000/cowsay?text=howdy'})}}`);
         res.end();
       }, (err) => {
         console.log(err);
         res.writeHead(400, {
-          'Content-Type': 'text/plain'
+          'Content-Type': 'application/json'
         });
-        res.write('{"msg": "invalid json"}');
+        res.write(`{"cowsay": ${cowsay.say({text: 'bad request\ntry: localhost:3000/cowsay?text=howdy'})}}`);
         res.end();
       });
-    debugger;
   }
 });
 
