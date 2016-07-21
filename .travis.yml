@@ -4,6 +4,7 @@ node_js:
 sudo: required
 install: 
   - npm install -g eslint mocha chai
+  - npm install
 script:
   - eslint $(find . -name '*.js' | grep -v '.min.js' | grep -v 'vendor' | grep -v 'node_modules')
   - ./script/test-submission.sh
