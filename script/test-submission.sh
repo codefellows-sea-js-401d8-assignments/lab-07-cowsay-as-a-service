@@ -9,6 +9,7 @@ for submission in ./lab-*;do
   cd "$submission"
   npm install
   mocha
+  eslint $(find . -name '*.js' | grep -v '.min.js' | grep -v 'vendor' | grep -v 'node_modules')
   if [[ "$?" -eq 1 ]];then 
     exit_code=1
   fi
