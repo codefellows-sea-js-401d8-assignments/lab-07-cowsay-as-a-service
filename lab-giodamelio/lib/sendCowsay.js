@@ -1,3 +1,5 @@
+'use strict';
+
 const cowsay = require('cowsay');
 
 module.exports.sendCowsay = (res, status, text) => {
