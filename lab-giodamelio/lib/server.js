@@ -6,6 +6,7 @@ const url = require('url');
 const cowsay = require('cowsay');
 
 const sendCowsay = require('./sendCowsay').sendCowsay;
+const bodyParser = require('./bodyParser');
 
 const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
@@ -21,25 +22,17 @@ const server = http.createServer((req, res) => {
 
       sendCowsay(res, 200, parsedUrl.query.text, parsedUrl.query.type);
     } else if (req.method === 'POST') {
-      let body = '';
-
-      req.on('data', (data) => {
-        body += data.toString();
-      });
-
-      req.on('end', () => {
-        try {
-          const options = JSON.parse(body);
-          if (!options.text) {
+      bodyParser(req)
+        .then((body) => {
+          if (!body.text) {
             sendCowsay(res, 400, 'You must include a json body with a text property');
             return;
           }
 
-          sendCowsay(res, 200, options.text, options.type);
-        } catch (e) {
+          sendCowsay(res, 200, body.text, body.type);
+        }).catch(() => {
           sendCowsay(res, 400, 'Invalid request');
-        }
-      });
+        });
     } else {
       sendCowsay(res, 405, 'Only GET and POST requests allowed');
     }
