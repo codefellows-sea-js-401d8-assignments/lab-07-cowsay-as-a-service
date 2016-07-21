@@ -10,7 +10,7 @@ describe('Server', () => {
       .get('/')
       .expect(200)
       .expect('Content-Type', 'text/plain')
-      .expect('API Endpoints:\n/api/cowsay')
+      .expect('API Endpoints:\n/api/cowsay\n/api/listcows')
       .end(done);
   });
 
@@ -84,6 +84,19 @@ describe('Server', () => {
         .expect('Content-Type', 'text/plain')
         .expect(' _______________\n< Invalid route >\n ---------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||') // eslint-disable-line max-len
         .end(done);
+    });
+  });
+
+  describe('/api/listcows', () => {
+    describe('GET', () => {
+      it('Lists available cow types', (done) => {
+        supertest(server)
+          .get('/api/listcows')
+          .expect(200)
+          .expect('Content-Type', 'text/plain')
+          .expect(' ______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________\n< Available cow types: beavis.zen, bong, bud-frogs, bunny, cheese, cower, daemon, default, doge, dragon-and-cow, dragon, elephant-in-snake, elephant, eyes, flaming-sheep, ghostbusters, goat, head-in, hedgehog, hellokitty, kiss, kitty, koala, kosh, luke-koala, mech-and-cow, meow, milk, moofasa, moose, mutilated, ren, satanic, sheep, skeleton, small, sodomized, squirrel, stegosaurus, stimpy, supermilker, surgery, telebears, turkey, turtle, tux, vader-koala, vader, www >\n --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||') // eslint-disable-line max-len
+          .end(done);
+      });
     });
   });
 });
