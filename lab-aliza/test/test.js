@@ -2,7 +2,8 @@
 
 const http = require('http');
 const expect = require('chai').expect;
-const server = require('../server');
+const server = require('../lib/_server');
+const cowsay = require('../lib/cowsay');
 const port = 5000;
 
 describe('cowsay', () => {
