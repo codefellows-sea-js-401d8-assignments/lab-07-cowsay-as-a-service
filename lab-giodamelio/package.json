@@ -6,8 +6,8 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "node lib/index.js",
-    "test": "mocha test/",
-    "lint": "eslint lib/ test/",
+    "test": "gulp test",
+    "lint": ":gulp eslint",
     "cover": "istanbul cover _mocha"
   },
   "author": "Gio d'Amelio",
