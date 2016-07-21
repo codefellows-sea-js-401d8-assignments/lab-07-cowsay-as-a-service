@@ -1,0 +1,31 @@
+{
+  "name": "lab-07-cowsay-as-a-service",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) lab-07-cowsay-http-server",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vienly/lab-07-cowsay-as-a-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vienly/lab-07-cowsay-as-a-service/issues"
+  },
+  "homepage": "https://github.com/vienly/lab-07-cowsay-as-a-service#readme",
+  "dependencies": {
+    "cowsay": "^1.1.8"
+  }
+}
