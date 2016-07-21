@@ -20,5 +20,8 @@
     "gulp-mocha": "^2.2.0",
     "mocha": "^2.5.3",
     "nodemon": "^1.9.2"
+  },
+  "dependencies": {
+    "cowsay": "^1.1.8"
   }
 }
