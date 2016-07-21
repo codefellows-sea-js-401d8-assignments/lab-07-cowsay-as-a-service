@@ -26,7 +26,7 @@ describe('Server', () => {
       it('No text query param', (done) => {
         supertest(server)
           .get('/api/cowsay')
-          .expect(200)
+          .expect(400)
           .expect('Content-Type', 'text/plain')
           .expect(' ____________________________________\n< You must inclue a text query param >\n ------------------------------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||') // eslint-disable-line max-len
           .end(done);
@@ -50,7 +50,7 @@ describe('Server', () => {
         supertest(server)
           .post('/api/cowsay')
           .send({})
-          .expect(200)
+          .expect(400)
           .expect('Content-Type', 'text/plain')
           .expect(' ___________________________________________________\n< You must include a json body with a text property >\n ---------------------------------------------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||') // eslint-disable-line max-len
           .end(done);
@@ -59,7 +59,7 @@ describe('Server', () => {
       it('Non json body', (done) => {
         supertest(server)
           .post('/api/cowsay')
-          .expect(200)
+          .expect(400)
           .expect('Content-Type', 'text/plain')
           .expect(' _________________\n< Invalid request >\n -----------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||') // eslint-disable-line max-len
           .end(done);
@@ -69,7 +69,7 @@ describe('Server', () => {
     it('Invalid method', (done) => {
       supertest(server)
         .put('/api/cowsay')
-        .expect(200)
+        .expect(405)
         .expect('Content-Type', 'text/plain')
         .expect(' ____________________________________\n< Only GET and POST requests allowed >\n ------------------------------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||') // eslint-disable-line max-len
         .end(done);
@@ -78,7 +78,7 @@ describe('Server', () => {
     it('Invalid route', (done) => {
       supertest(server)
         .put('/api/i_dont_exist')
-        .expect(200)
+        .expect(400)
         .expect('Content-Type', 'text/plain')
         .expect(' _______________\n< Invalid route >\n ---------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||') // eslint-disable-line max-len
         .end(done);

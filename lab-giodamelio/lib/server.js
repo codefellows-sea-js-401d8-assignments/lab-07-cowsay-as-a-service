@@ -11,11 +11,11 @@ const server = http.createServer((req, res) => {
   } else if (parsedUrl.pathname === '/api/cowsay') {
     if (req.method === 'GET') {
       if (!parsedUrl.query.text) {
-        sendCowsay(res, 'You must inclue a text query param');
+        sendCowsay(res, 400, 'You must inclue a text query param');
         return;
       }
 
-      sendCowsay(res, parsedUrl.query.text);
+      sendCowsay(res, 200, parsedUrl.query.text);
     } else if (req.method === 'POST') {
       let body = '';
 
@@ -27,20 +27,20 @@ const server = http.createServer((req, res) => {
         try {
           const options = JSON.parse(body);
           if (!options.text) {
-            sendCowsay(res, 'You must include a json body with a text property');
+            sendCowsay(res, 400, 'You must include a json body with a text property');
             return;
           }
 
-          sendCowsay(res, options.text);
+          sendCowsay(res, 200, options.text);
         } catch (e) {
-          sendCowsay(res, 'Invalid request');
+          sendCowsay(res, 400, 'Invalid request');
         }
       });
     } else {
-      sendCowsay(res, 'Only GET and POST requests allowed');
+      sendCowsay(res, 405, 'Only GET and POST requests allowed');
     }
   } else {
-    sendCowsay(res, 'Invalid route');
+    sendCowsay(res, 400, 'Invalid route');
   }
 });
 
