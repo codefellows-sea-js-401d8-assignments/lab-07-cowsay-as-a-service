@@ -21,13 +21,35 @@ describe('HTTP Cowsay Testing', () => {
   });
 
   it('POST request will return cowsay with text', (done) => {
-    request('localhost:5000')
+    request('localhost:' + port)
     .post('/')
-    .send({text: 'testing cowsay'})
+    .send({text: 'hello world'})
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res.status).to.eql(200);
-      expect(res.text).to.eql(cowsay('testing cowsay'));
+      expect(res.text).to.eql(cowsay('hello world'));
+      done();
+    });
+  });
+
+  it('GET / will return API Endpoints: /api/cowsay', (done) => {
+    request('localhost:' + port)
+    .get('/')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.text).to.eql('API Endpoints:\n/api/cowsay');
+      done();
+    });
+  });
+
+  it('GET /api/cowsay?text=hello-world will return hello world cowsay', (done) => {
+    request('localhost:' + port)
+    .get('/api/cowsay?text=hello-world')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.text).to.eql(cowsay('hello world'));
       done();
     });
   });
