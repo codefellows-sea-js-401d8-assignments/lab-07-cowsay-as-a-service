@@ -1,15 +1,15 @@
 'use strict';
 
-module.exports = exports = function(req){
+const cowPromise = module.exports = exports = function(req){
   return new Promise((resolve, reject) => {
-    let jsonString = '';
+    let mooString = '';
     req.on('data', (data) => {
-      jsonString = jsonString + data.toString();
+      mooString = data.toString();
     });
 
     req.on('end', () => {
       try {
-        let parsed = JSON.parse(jsonString);
+        let parsed = JSON.parse(mooString);
         resolve(parsed);
       } catch(e) {
         reject(e);
