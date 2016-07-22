@@ -11,6 +11,6 @@ To begin, simply clone down the repo and run it in the terminal via `npm i`. All
 
   - To send a "POST" request, use `curl -X POST localhost:3000/api/cowsay -d '{"text":"Moooooo!"}'`.
 
-  ⋅⋅⋅Any other type of request will issue a response asking you to remedy your request to one of these two types.
+    Any other type of request will issue a response asking you to remedy your request to one of these two types.
 
 - To run any tests or lint files, simply use `gulp`.
