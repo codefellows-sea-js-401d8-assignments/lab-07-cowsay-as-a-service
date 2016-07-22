@@ -2,23 +2,24 @@
 
 const cowPromise = require('./lib/cowPromise');
 const http = require('http');
+const cowsay = require('./lib/cowsay');
 
-http.createServer((req, res) => {
+const server = module.exports = exports = http.createServer((req, res) => {
 
-  if(req.method === 'GET') {
+  if(req.method === 'POST' && req.url === '/moo') {
     cowPromise(req)
-    .then((json) => {
+    .then((Moo) => {
       res.writeHead(200, {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain'
       });
-      res.write('{"msg": "The cow goes": "' + json.moo + '"}');
+      res.write(cowsay(Moo.text));
       res.end();
     }, (err) => {
       console.log(err);
       res.writeHead(400, {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain'
       });
-      res.write('{"msg": "json error!!!!!"}');
+      res.write('The cow did not MOOOOOOOOOOOOOOOOOO!!!!!!!!!!');
       res.end();
     });
   }
