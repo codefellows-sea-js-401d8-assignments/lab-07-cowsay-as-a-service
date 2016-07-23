@@ -5,7 +5,7 @@ This project creates a simple http server through which a user can use "GET" or 
 ## Getting Started
 To begin, simply clone down the repo and run it in the terminal via `npm i`. All commands outlaid below will assume input in terminal.
 
-- To start the server, use `node lab-shane/lib/server.js`.
+- To start the server, use `node lib/server.js`.
 
   - To send a "GET" request, use `curl localhost:3000/api/cowsay?text=Hello`.
 

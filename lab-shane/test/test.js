@@ -7,6 +7,8 @@ const expect = chai.expect;
 const request = chai.request;
 const server = require('../lib/server.js');
 
+console.log(server);
+
 describe('Cowsay as a service testing', () => {
   it('should return a status code of "200"', (done) => {
     request('localhost:3000/api')
