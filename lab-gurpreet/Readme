@@ -1,0 +1,8 @@
+as a developer
+     need to install using npm install node
+     need to have package.json by running command npm init
+     need to instal mocha, chai, chai-http and mocha eslint
+
+for test
+     you should be able to run test by just running command mocha in the terminal.
+     you should see status code 200.
