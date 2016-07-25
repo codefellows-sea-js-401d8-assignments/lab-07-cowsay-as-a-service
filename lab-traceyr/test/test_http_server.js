@@ -16,9 +16,9 @@ describe('cowsay http server testing with chai-http', () =>{
     request('localhost:3000')
     .get('/cowsay?text=hello-world')
     .end(function(err, res){
-      // expect(err).to.eql(null);
-      expect(res.text).to.eql(('hello-world'));
-      // expect(res.text).to.have.status(200);
+      expect(err).to.eql(null);
+      expect(res.text).to.have.string('hello-world');
+      expect(res).to.have.status(200);
       done();
     });
   });
