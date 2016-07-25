@@ -17,7 +17,7 @@
 * create a package.json
 * create a gulpfile
  * have a lint task for running eslint
- * have a lint task for running mocha 
+ * have a lint task for running mocha
  * have a default task for running the lint and mocha tasks
 
 # Directions
@@ -30,7 +30,7 @@ for all request to `/` the server should respond with the following:
  * a header containing `Content-Type: text/plain`
  * a status code of **200**
  * a response with the string ...(aka. `res.write(<following string>)`)
-``` 
+```
 API Endpoints:
   /api/cowsay
 ```
@@ -57,7 +57,7 @@ API Endpoints:
  * a body including the value returned from `cowsay.say({text: 'bad request\ntry: localhost:3000/cowsay?text=howdy'})`
 
 # Tests
-* write a test for a `GET` request to `/cowsay?id='hello-world'`
+* write a test for a `GET` request to `/cowsay?text='hello-world'`
  * should return a status code of `200`
 
 ## Bonus
