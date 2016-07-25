@@ -6,4 +6,4 @@ Next, install dependencies via `npm install`
 
 Start the server with `node server`
 
-Using HTTPie, type a command like `http POST :3000 anymessage`
+Using HTTPie, type a command like `http POST :3000 text=anymessage`

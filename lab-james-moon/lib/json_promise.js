@@ -1,18 +1,19 @@
 'use strict';
+const Promise = require('promise');
 
 module.exports = exports = function(req) {
   return new Promise((resolve, reject) => {
-    var jsonString = '';
+    let body = '';
+    
     req.on('data', (data) => {
-      jsonString = jsonString + data.toString();
+      body += data;
     });
 
     req.on('end', () => {
-      try {
-        let parsed = JSON.parse(jsonString);
-        resolve(parsed);
-      } catch(e) {
-        reject(e);
+      if (body.length) {
+        resolve(JSON.parse(body));
+      } else {
+        reject(Error('not working'));
       }
     });
   });
