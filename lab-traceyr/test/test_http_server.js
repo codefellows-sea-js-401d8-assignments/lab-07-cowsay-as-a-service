@@ -17,7 +17,7 @@ describe('cowsay http server testing with chai-http', () =>{
     .get('/cowsay?text=hello-world')
     .end(function(err, res){
       // expect(err).to.eql(null);
-      expect(res.text).to.eql(cowsay.say('hello-world'));
+      expect(res.text).to.eql(('hello-world'));
       // expect(res.text).to.have.status(200);
       done();
     });
