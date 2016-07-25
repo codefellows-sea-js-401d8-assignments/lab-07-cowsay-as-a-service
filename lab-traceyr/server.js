@@ -5,7 +5,7 @@ const cowsay = require('cowsay');
 const url = require('url');
 const jsonPromise = require('./lib/json_promise');
 
-const server = http.createServer((req, res) =>{
+http.createServer((req, res) =>{
   let parsed = url.parse(req.url, true);
   if(req.url === '/'){
     res.writeHead(200, {'Content-Type': 'text/plain'});
