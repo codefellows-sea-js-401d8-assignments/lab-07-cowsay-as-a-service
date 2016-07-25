@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
 
   let parsed = url.parse(req.url, true);
 
-  if(req.method === 'GET' && req.url === '/') {
+  if(req.method === 'GET' && req.url === '/'){
     res.writeHead(200, {
       'Content-Type':'text/plain'
     });
@@ -17,14 +17,14 @@ const server = http.createServer((req, res) => {
     res.end();
   }
 
-  if(req.method === 'GET' && req.url === '/api/cowsay' + parsed.search) {
-    if (parsed.query.text) {
+  if(req.method === 'GET' && req.url === '/api/cowsay' + parsed.search){
+    if(parsed.query.text){
       res.writeHead(200, {
         'Content-Type': 'text/plain'
       });
       res.write(cowsay(parsed.query.text.split('-').join(' ')));
       res.end();
-    } else {
+    }else{
       res.writeHead(400, {
         'Content-Type': 'text/plain'
       });
@@ -32,16 +32,16 @@ const server = http.createServer((req, res) => {
     }
   }
 
-  if(req.method === 'POST' && req.url === '/') {
+  if(req.method === 'POST' && req.url === '/'){
     cowsayPromise(req)
       .then((message) => {
-        if (message.text) {
+        if(message.text){
           res.writeHead(200, {
             'Content-Type': 'text/plain'
           });
           res.write(cowsay(message.text));
           res.end();
-        } else{
+        }else{
           res.writeHead(400, {
             'Content-Type': 'text/plain'
           });
