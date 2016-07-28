@@ -11,8 +11,12 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "eslint": "^3.1.1",
     "gulp": "^3.9.1",
     "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "cowsay": "^1.1.8"
   }
 }
