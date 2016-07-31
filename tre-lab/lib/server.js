@@ -15,12 +15,19 @@ http.createServer((req, res) => {
     res.end();
     return;
   }
+
+  if(req.url.pathname === '/api/cowsay/list') {
+    cowsay.list((err, cows) => {
+      respond(res, 200, {'Content-Type': 'text/plain'}, cows.join(', ') , false);
+    });
+  }
+
   if (parsedUrl.pathname === '/api/cowsay') {
     if (req.method === 'GET') {
       //send through to cowsay
       if (!parsedUrl.query || parsedUrl.query === null || !parsedUrl.query.text) {
         res.writeHead(400, {'Content-Type': 'text/plain'});
-        res.write(cowsay.say({text: 'bad request\n try: localhost:3000/api/cowsay?text=howdy'
+        res.write(cowsay.say({text: 'bad request\n try: localhost:3000/api/cowsay text==howdy'
         }));
         res.end();
         return;
@@ -40,13 +47,13 @@ http.createServer((req, res) => {
         }
         res.writeHead(400, {'Content-Type': 'text/plain'});
         res.write(cowsay.say({
-          text: 'bad request\ntry: localhost:3000/cowsay?text=howdy'
+          text: 'bad request\ntry: localhost:3000/cowsay text==howdy'
         }));
         res.end();
       }, (err) => {
         console.log(err);
         res.writeHead(400, {'Content-Type': 'text/plain'});
-        res.write(cowsay.say({text: 'bad request\ntry: localhost:3000/cowsay?text=howdy'}));
+        res.write(cowsay.say({text: 'bad request\ntry: localhost:3000/cowsay text==howdy'}));
         res.end();
       });
     }
