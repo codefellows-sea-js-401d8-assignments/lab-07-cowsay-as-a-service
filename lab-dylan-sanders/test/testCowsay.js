@@ -1,4 +1,5 @@
 'use strict';
+
 const chai = require('chai');
 const chaiHTTP = require('chai-http');
 chai.use(chaiHTTP);
@@ -10,27 +11,12 @@ require('../server');
 describe('Cowsay HTTP server test', () => {
   it('GET /cowsay return cowsays', (done) => {
     request('localhost:3000')
-      .get('/')
+      .get('/api/cowsay?text=hello-world')
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.status).to.eql(200);
-        expect(res.text).to.eql('Cowsays');
+        expect(res.text).to.have.string('hello-world');
         done();
       });
-  });
-
-  it('POST /cowsay writes cowsay', (done) => {
-    request('localhost:3000')
-      .post('/')
-      .send({
-        cowsay: 'cowsays...'
-      })
-        .end(function(err, res) {
-          expect(err).to.eql(null);
-          expect(res.status).to.eql(200);
-          expect(res.text).to.eql('...');
-          done();
-        });
-
   });
 });

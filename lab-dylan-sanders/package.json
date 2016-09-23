@@ -20,5 +20,8 @@
     "gulp-eslint": "^3.0.1",
     "gulp-mocha": "^2.2.0",
     "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "cowsay": "^1.1.8"
   }
 }

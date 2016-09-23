@@ -3,8 +3,9 @@ module.exports = exports = function(req) {
   return new Promise((resolve, reject) => {
     let  cowsay = '';
     req.on('data', (data) => {
-      cowsay = cowsay + data.toString();
+      cowsay += data.toString();
     });
+    
     req.on('end', () => {
       try {
         let parsedCowsay = JSON.parse(cowsay);

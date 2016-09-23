@@ -22,4 +22,9 @@ gulp.task('mocha', () => {
     .pipe(mocha());
 });
 
-gulp.task('default', ['lint:all', 'mocha']);
+gulp.task('watch', () => {
+  gulp.watch(testFiles, ['mocha']);
+  gulp.watch(appFiles, testFiles, serverFile, ['lint:all']);
+});
+
+gulp.task('default', ['lint:all', 'mocha', 'watch']);
